@@ -1,6 +1,7 @@
 // server.js
 const express = require('express');
 const { AccessToken } = require('livekit-server-sdk');
+const cors = require('cors');
 
 
 const createToken = () => {
@@ -21,6 +22,10 @@ const createToken = () => {
 
 const app = express();
 const port = 3000;
+
+app.use(cors({
+  origin: '*',
+}));
 
 // Define a default route
 app.get('/', (req, res) => {
