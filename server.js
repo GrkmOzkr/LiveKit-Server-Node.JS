@@ -1,6 +1,6 @@
 // server.js
-import express from 'express';
-import { AccessToken } from 'livekit-server-sdk';
+const express = require('express');
+const { AccessToken } = require('livekit-server-sdk');
 
 
 const createToken = () => {

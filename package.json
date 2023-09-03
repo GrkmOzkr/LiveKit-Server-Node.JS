@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "livekit-server-sdk",
   "version": "1.2.6",
   "description": "Server-side SDK for LiveKit",
@@ -9,6 +9,7 @@
   "author": "David Zhao <david@davidzhao.com>",
   "license": "Apache-2.0",
   "scripts": {
+    "start": "node server.js",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "build-docs": "typedoc",
