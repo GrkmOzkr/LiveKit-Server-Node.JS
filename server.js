@@ -2,6 +2,7 @@
 const express = require('express');
 const { AccessToken } = require('livekit-server-sdk');
 const cors = require('cors');
+const bodyParser = require('body-parser'); // Import body-parser
 
 
 const createToken = () => {
@@ -32,8 +33,20 @@ app.get('/', (req, res) => {
   res.send('Welcome to My Server');
 });
 
-app.get('/getToken', (req, res) => {
-  res.send(createToken());
+// Modify this route to accept POST requests
+app.post('/getToken', (req, res) => {
+  // Handle POST request data here
+  // You can access the JSON data sent in the request body using req.body
+  // For example, you can parse it and return a response
+  const requestData = req.body;
+
+  // Call your createToken function with requestData if needed
+  // const token = createToken(requestData);
+
+  // Send a response, for example:
+  // res.json({ token });
+
+  // Don't forget to handle errors and validation
 });
 
 app.listen(port, () => {
