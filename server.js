@@ -3,11 +3,14 @@ const { AccessToken } = require('livekit-server-sdk');
 const cors = require('cors');
 const bodyParser = require('body-parser'); // Import body-parser
 
-const createToken = (roomName, participantName) => {
+const createToken = (roomName, participantName, playerName) => {
   const at = new AccessToken('APIB7mkxVfcNXHo', 'hBPONEbtMxVqcvsNSLKIUDf0ONWiBhaC1E4JCd8Ai3F', {
     identity: participantName,
   });
-  at.addGrant({ roomJoin: true, room: roomName });
+
+  // You can add the playerName to the token as needed
+  at.addGrant({ roomJoin: true, room: roomName, playerName });
+
   return at.toJwt();
 }
 
@@ -30,10 +33,10 @@ app.post('/getToken', (req, res) => {
   console.log('Received POST request to /getToken');
 
   const requestData = req.body;
-  const { participantIdentity, room, name } = requestData; // Extract room and participantIdentity
+  const { room, participantIdentity, playerName } = requestData; // Extract room, participantIdentity, and playerName
 
-  // Generate a token with the extracted room and participantIdentity
-  const token = createToken(participantIdentity, room, name);
+  // Generate a token with the extracted room, participantIdentity, and playerName
+  const token = createToken(room, participantIdentity, playerName);
 
   res.json({ token });
 });
