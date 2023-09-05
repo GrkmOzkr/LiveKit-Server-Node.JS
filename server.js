@@ -9,7 +9,7 @@ const createToken = (roomName, participantName, playerName) => {
   });
 
   // You can add the playerName to the token as needed
-  at.addGrant({ roomJoin: true, room: roomName, player: playerName });
+  at.addGrant({ roomJoin: true, room: roomName, playerName: playerName });
 
   return at.toJwt();
 }
@@ -33,10 +33,10 @@ app.post('/getToken', (req, res) => {
   console.log('Received POST request to /getToken');
 
   const requestData = req.body;
-  const { room, participantIdentity, name } = requestData; // Extract room, participantIdentity, and playerName
+  const { room, participantIdentity, playerName } = requestData; // Extract room, participantIdentity, and playerName
 
   // Generate a token with the extracted room, participantIdentity, and playerName
-  const token = createToken(room, participantIdentity, name);
+  const token = createToken(room, participantIdentity, playerName);
 
   res.json({ token });
 });
