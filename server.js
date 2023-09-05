@@ -40,6 +40,8 @@ app.post('/getToken', (req, res) => {
   // For example, you can parse it and return a response
   const requestData = req.body;
 
+  res.send(createToken());
+
   // Call your createToken function with requestData if needed
   // const token = createToken(requestData);
 
