@@ -5,21 +5,21 @@ const cors = require('cors');
 const bodyParser = require('body-parser'); // Import body-parser
 
 
-// const createToken = () => {
-//   // if this room doesn't exist, it'll be automatically created when the first
-//   // client joins
-//   const roomName = 'quickstart-room';
-//   // identifier to be used for participant.
-//   // it's available as LocalParticipant.identity with livekit-client SDK
-//   const participantName = 'quickstart-username';
+const createToken = () => {
+  // if this room doesn't exist, it'll be automatically created when the first
+  // client joins
+  const roomName = 'quickstart-room';
+  // identifier to be used for participant.
+  // it's available as LocalParticipant.identity with livekit-client SDK
+  const participantName = 'quickstart-username';
 
-//   const at = new AccessToken('APIB7mkxVfcNXHo', 'hBPONEbtMxVqcvsNSLKIUDf0ONWiBhaC1E4JCd8Ai3F', {
-//     identity: participantName,
-//   });
-//   at.addGrant({ roomJoin: true, room: roomName });
+  const at = new AccessToken('APIB7mkxVfcNXHo', 'hBPONEbtMxVqcvsNSLKIUDf0ONWiBhaC1E4JCd8Ai3F', {
+    identity: participantName,
+  });
+  at.addGrant({ roomJoin: true, room: roomName });
 
-//   return at.toJwt();
-// }
+  return at.toJwt();
+}
 
 const app = express();
 const port = 3000;
