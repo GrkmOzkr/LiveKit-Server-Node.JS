@@ -3,13 +3,14 @@ const { AccessToken } = require('livekit-server-sdk');
 const cors = require('cors');
 const bodyParser = require('body-parser'); // Import body-parser
 
-const createToken = () => 
-  // if this room doesn't exist, it'll be automatically created when the first
-  // client joins
-   new AccessToken('APIB7mkxVfcNXHo', 'hBPONEbtMxVqcvsNSLKIUDf0ONWiBhaC1E4JCd8Ai3F', {
+const createToken = () => {  
+  const roomName = 'quickstart-room';
+  const at = new AccessToken('APIB7mkxVfcNXHo', 'hBPONEbtMxVqcvsNSLKIUDf0ONWiBhaC1E4JCd8Ai3F', {
     identity: 'quickstart-username',
-  }).toJwt()
-
+  });
+  at.addGrant({ roomJoin: true, room: roomName });
+  return at.toJwt();
+}
 
 const app = express();
 const port = 3000;
