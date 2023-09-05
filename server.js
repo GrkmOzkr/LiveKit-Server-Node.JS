@@ -33,10 +33,10 @@ app.post('/getToken', (req, res) => {
   console.log('Received POST request to /getToken');
 
   const requestData = req.body;
-  const { room, participantIdentity, player } = requestData; // Extract room, participantIdentity, and playerName
+  const { room, participantIdentity, name } = requestData; // Extract room, participantIdentity, and playerName
 
   // Generate a token with the extracted room, participantIdentity, and playerName
-  const token = createToken(room, participantIdentity, player);
+  const token = createToken(room, participantIdentity, name);
 
   res.json({ token });
 });
