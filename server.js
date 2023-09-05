@@ -9,7 +9,7 @@ const createToken = (roomName, participantName, playerName) => {
   });
 
   // You can add the playerName to the token as needed
-  at.addGrant({ roomJoin: true, room: roomName, playerName: playerName });
+  at.addGrant({ roomJoin: true, room: roomName, playerName });
 
   return at.toJwt();
 }
